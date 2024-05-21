@@ -13,6 +13,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<a class="btn btn-secondary btn-lg mt-5" href="FormInsertCaballeros">CREAR CABALLERO</a>
 	<table class="table">
 		<thead>
 			<tr>

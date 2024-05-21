@@ -39,4 +39,11 @@ public class Arma {
 		this.foto = foto;
 	}
 
+	@Override
+	public String toString() {
+		return "Arma [id=" + id + ", nombre=" + nombre + ", capacidadDanio=" + capacidadDanio + ", foto=" + foto + "]";
+	}
+	
+	
+
 }

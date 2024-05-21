@@ -1,5 +1,6 @@
 package modelo;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -45,5 +46,26 @@ public class ModeloCaballero {
 		}
 		return caballeros;
 
+	}
+	
+	public void insert(Caballero caballero) {
+		 String sql = "INSERT INTO CABALLEROS (nombre, fuerza, experiencia, foto, arma_id, escudo_id) VALUES (?, ?, ?, ?, ?, ?)";
+	
+		 PreparedStatement pst;
+		 
+		 try {
+			pst = conector.getConexion().prepareStatement(sql);
+			
+			pst.setString(1, caballero.getNombre());
+			pst.setInt(2, caballero.getFuerza());
+			pst.setInt(3, caballero.getExperiencia());
+			pst.setString(4, caballero.getFoto());
+			pst.setInt(5, caballero.getArma().getId());
+			pst.setInt(6, caballero.getEscudo().getId());
+			
+			pst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

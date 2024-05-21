@@ -3,6 +3,7 @@ package modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ModeloEscudo {
 
@@ -31,5 +32,28 @@ public class ModeloEscudo {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public ArrayList<Escudo> getAll() {
+		ArrayList<Escudo> escudos = new ArrayList<>();
+		
+		String sql = "SELECT * FROM ESCUDOS";
+		
+		try {
+			ResultSet rs = conector.getConexion().createStatement().executeQuery(sql);
+			while (rs.next()) {
+				Escudo escudo = new Escudo();
+				
+				escudo.setId(rs.getInt("id"));
+				escudo.setNombre(rs.getString("nombre"));
+				escudo.setCapacidadDefensa(rs.getInt("capacidad_defensa"));
+				
+				
+				escudos.add(escudo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return escudos;
 	}
 }
