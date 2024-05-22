@@ -16,19 +16,19 @@
  <h1>Registrar Caballero</h1>
     <form action="StoreCaballeros" method="post">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+        <input type="text" id="nombre" name="nombre"><br><br>
         
         <label for="fuerza">Fuerza:</label>
-        <input type="number" id="fuerza" name="fuerza" required><br><br>
+        <input type="number" id="fuerza" name="fuerza"><br><br>
         
         <label for="experiencia">Experiencia:</label>
-        <input type="number" id="experiencia" name="experiencia" required><br><br>
+        <input type="number" id="experiencia" name="experiencia"><br><br>
         
         <label for="foto">Foto (URL):</label>
-        <input type="text" id="foto" name="foto" required><br><br> 
+        <input type="text" id="foto" name="foto"><br><br> 
         
         <label for="idArma">Arma:</label> 
-		<select name="idArma" required>
+		<select name="idArma">
 		    <option value="0"></option>
 		    <c:forEach var="arma" items="${armas}">
 		        <option value="${arma.id}">${arma.nombre}</option>
@@ -36,7 +36,7 @@
 		</select><br><br>
 
 		<label for="idEscudo">Escudo:</label> 
-		<select name="idEscudo" required>
+		<select name="idEscudo">
 		    <option value="0"></option>
 		    <c:forEach var="escudo" items="${escudos}">
 		        <option value="${escudo.id}">${escudo.nombre}</option>

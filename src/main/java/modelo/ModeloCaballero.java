@@ -68,4 +68,21 @@ public class ModeloCaballero {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean checkNombreRepetido(String nombre) {
+		try {
+			PreparedStatement pst = conector.getConexion().prepareStatement("SELECT * FROM CABALLEROS WHERE nombre = ?");
+			pst.setString(1, nombre);
+			ResultSet rs = pst.executeQuery();
+			
+			if (rs.next()) {
+	            return true;
+	        } else {
+	            return false;
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
 }
