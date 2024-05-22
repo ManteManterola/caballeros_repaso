@@ -34,7 +34,8 @@ public class FormInsertCaballeros extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setAttribute("msg", request.getParameter("msg"));
+		
 		Conector conector = new Conector();
 		ModeloArma modeloArma = new ModeloArma();
 		ModeloEscudo modeloEscudo = new ModeloEscudo();

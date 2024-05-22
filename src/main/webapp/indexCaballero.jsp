@@ -13,7 +13,15 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<a class="btn btn-secondary btn-lg mt-5" href="FormInsertCaballeros">CREAR CABALLERO</a>
+	<c:if test="${msg=='insertOk'}">
+		<div class="alert alert-success alert-dismissible fade show m-0"
+			role="alert">
+			<strong>Ok!</strong> El caballero se inserto correctamente.
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+	</c:if>
+	<a class="btn btn-secondary btn-lg mt-5" href="FormInsertCaballeros">CREAR CABALLERO</a>
 	<table class="table">
 		<thead>
 			<tr>

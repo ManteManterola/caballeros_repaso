@@ -32,7 +32,7 @@ public class StoreCaballeros extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setAttribute("msg", request.getParameter("msg"));
 		
 	}
 
@@ -67,7 +67,7 @@ public class StoreCaballeros extends HttpServlet {
 		modeloEscudo.setConector(conector);
 		
 		if (nombre.equals(null) || fuerza<0 || fuerza>100 || experiencia<0 || experiencia>100 || modeloCaballero.checkNombreRepetido(nombre) == true || idArma == 0 || idEscudo == 0) {
-			response.sendRedirect("FormInsertCaballeros");
+			response.sendRedirect("FormInsertCaballeros?msg=insertError");
 		} else {
 			Caballero caballero = new Caballero();
 			caballero.setNombre(nombre);
@@ -80,7 +80,7 @@ public class StoreCaballeros extends HttpServlet {
 	        
 	        modeloCaballero.insert(caballero);
 	        
-	        response.sendRedirect("IndexCaballeros");
+	        response.sendRedirect("IndexCaballeros?msg=insertOk");
 		}
 		
 	}

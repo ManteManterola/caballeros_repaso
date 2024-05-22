@@ -14,7 +14,15 @@
 </head>
 <body>
  <h1>Registrar Caballero</h1>
-    <form action="StoreCaballeros" method="post">
+	<c:if test="${msg=='insertError'}">
+		<div class="alert alert-danger alert-dismissible fade show m-0"
+			role="alert">
+			<strong>Error al insertar</strong>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+	</c:if>
+	<form action="StoreCaballeros" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"><br><br>
         
