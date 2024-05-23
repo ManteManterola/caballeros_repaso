@@ -22,37 +22,48 @@
 				aria-label="Close"></button>
 		</div>
 	</c:if>
-	<form action="StoreCaballeros" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre"><br><br>
-        
-        <label for="fuerza">Fuerza:</label>
-        <input type="number" id="fuerza" name="fuerza"><br><br>
-        
-        <label for="experiencia">Experiencia:</label>
-        <input type="number" id="experiencia" name="experiencia"><br><br>
-        
-        <label for="foto">Foto (URL):</label>
-        <input type="text" id="foto" name="foto"><br><br> 
-        
-        <label for="idArma">Arma:</label> 
-		<select name="idArma">
-		    <option value="0"></option>
-		    <c:forEach var="arma" items="${armas}">
-		        <option value="${arma.id}">${arma.nombre}</option>
-		    </c:forEach>
-		</select><br><br>
+    <form action="StoreCaballeros" method="post">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
+        </div>
 
-		<label for="idEscudo">Escudo:</label> 
-		<select name="idEscudo">
-		    <option value="0"></option>
-		    <c:forEach var="escudo" items="${escudos}">
-		        <option value="${escudo.id}">${escudo.nombre}</option>
-		    </c:forEach>
-		</select><br><br>
+        <div class="mb-3">
+            <label for="fuerza" class="form-label">Fuerza:</label>
+            <input type="number" class="form-control" id="fuerza" name="fuerza">
+        </div>
 
-<input type="submit" value="Crear">
-        
+        <div class="mb-3">
+            <label for="experiencia" class="form-label">Experiencia:</label>
+            <input type="number" class="form-control" id="experiencia" name="experiencia">
+        </div>
+
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto (URL):</label>
+            <input type="text" class="form-control" id="foto" name="foto">
+        </div>
+
+        <div class="mb-3">
+            <label for="idArma" class="form-label">Arma:</label>
+            <select class="form-select" name="idArma">
+                <option value="0"></option>
+                <c:forEach var="arma" items="${armas}">
+                    <option value="${arma.id}">${arma.nombre}</option>
+                </c:forEach>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="idEscudo" class="form-label">Escudo:</label>
+            <select class="form-select" name="idEscudo">
+                <option value="0"></option>
+                <c:forEach var="escudo" items="${escudos}">
+                    <option value="${escudo.id}">${escudo.nombre}</option>
+                </c:forEach>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear</button>
     </form>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

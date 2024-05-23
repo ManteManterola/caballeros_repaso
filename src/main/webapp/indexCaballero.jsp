@@ -22,6 +22,10 @@
 		</div>
 	</c:if>
 	<a class="btn btn-secondary btn-lg mt-5" href="FormInsertCaballeros">CREAR CABALLERO</a>
+	<a class="btn btn-secondary btn-lg mt-5" href="Lucha1Stage">LUCHAR</a>
+	<form action="IndexCaballeros" method="get" class="mb-3">
+        <input type="text" name="search" id="searchBox" class="form-control" placeholder="Buscar por nombre...">
+    </form>
 	<table class="table">
 		<thead>
 			<tr>

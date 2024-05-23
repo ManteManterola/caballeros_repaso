@@ -2,6 +2,8 @@ package controlador.caballeros;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +36,10 @@ public class IndexCaballeros extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("msg", request.getParameter("msg"));
+		
+		// Obtener el parámetro de búsqueda
+        String search = request.getParameter("search");
+        
 		//Rellenar conector
 		Conector conector = new Conector();
 		ModeloCaballero modeloCaballero = new ModeloCaballero();
@@ -41,6 +47,18 @@ public class IndexCaballeros extends HttpServlet {
 
 		
 		ArrayList<Caballero> caballeros = modeloCaballero.getAll();
+		
+		// Filtrar la lista si hay un término de búsqueda
+        if (search != null && !search.isEmpty()) {
+            Iterator<Caballero> iterator = caballeros.iterator();
+            while (iterator.hasNext()) {
+                Caballero caballero = iterator.next();
+                if (!caballero.getNombre().toLowerCase().contains(search.toLowerCase())) {
+                    iterator.remove();
+                }
+            }
+        }
+        
 		request.setAttribute("caballeros", caballeros);
 		request.getRequestDispatcher("indexCaballero.jsp").forward(request, response);
 	}
@@ -51,7 +69,6 @@ public class IndexCaballeros extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
