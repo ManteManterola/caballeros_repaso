@@ -66,4 +66,12 @@ public class Caballero {
 		this.escudo = escudo;
 	}
 
+	@Override
+	public String toString() {
+		return "Caballero [id=" + id + ", nombre=" + nombre + ", fuerza=" + fuerza + ", experiencia=" + experiencia
+				+ ", foto=" + foto + ", arma=" + arma + ", escudo=" + escudo + "]";
+	}
+	
+	
+
 }

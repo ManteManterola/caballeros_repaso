@@ -48,6 +48,32 @@ public class ModeloCaballero {
 
 	}
 	
+	public Caballero getPorId(int id) {
+		try {
+			PreparedStatement pst = conector.getConexion().prepareStatement("SELECT * FROM CABALLEROS WHERE id = ?");
+			pst.setInt(1, id);
+	        ResultSet rs = pst.executeQuery();
+	        
+	        if (rs.next()) {
+	        	Caballero caballero = new Caballero();
+
+				caballero.setId(rs.getInt("id"));
+				caballero.setNombre(rs.getString("nombre"));
+				caballero.setFuerza(rs.getInt("fuerza"));
+				caballero.setExperiencia(rs.getInt("experiencia"));
+				caballero.setFoto(rs.getString("foto"));
+				caballero.setArma(modeloArma.getArma(rs.getInt("arma_id")));
+				caballero.setEscudo(modeloEscudo.getEscudo(rs.getInt("escudo_id")));
+				
+				return caballero;
+	        }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public void insert(Caballero caballero) {
 		 String sql = "INSERT INTO CABALLEROS (nombre, fuerza, experiencia, foto, arma_id, escudo_id) VALUES (?, ?, ?, ?, ?, ?)";
 	
@@ -84,5 +110,20 @@ public class ModeloCaballero {
 			e.printStackTrace();
 		}
 		return true;
+	}
+
+
+
+	public void delete(int id) {
+	    String sql = "DELETE FROM CABALLEROS WHERE id=?";
+
+	    try {
+	        PreparedStatement pst = conector.getConexion().prepareStatement(sql);
+	        pst.setInt(1, id);
+	        pst.execute();
+	    
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
 	}
 }

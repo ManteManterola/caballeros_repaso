@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,11 +21,21 @@
 				aria-label="Close"></button>
 		</div>
 	</c:if>
-	<a class="btn btn-secondary btn-lg mt-5" href="FormInsertCaballeros">CREAR CABALLERO</a>
+	<a class="btn btn-secondary btn-lg mt-5" href="FormInsertCaballeros">CREAR
+		CABALLERO</a>
 	<a class="btn btn-secondary btn-lg mt-5" href="Lucha1Stage">LUCHAR</a>
+	
+	<form action="EliminarCaballeros" method="post">
+		<label for="caballerosAEliminar">IDs de Caballeros a Eliminar
+			(separadas por comas):</label> <input type="text" id="caballerosAEliminar"
+			name="caballerosAEliminar">
+		<button type="submit">Eliminar</button>
+	</form>
+
 	<form action="IndexCaballeros" method="get" class="mb-3">
-        <input type="text" name="search" id="searchBox" class="form-control" placeholder="Buscar por nombre...">
-    </form>
+		<input type="text" name="search" id="searchBox" class="form-control"
+			placeholder="Buscar por nombre...">
+	</form>
 	<table class="table">
 		<thead>
 			<tr>
