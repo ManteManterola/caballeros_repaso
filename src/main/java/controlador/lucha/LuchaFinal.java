@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modelo.Caballero;
+import modelo.Conector;
+import modelo.ModeloCaballero;
+import modelo.ModeloLucha;
+
 /**
  * Servlet implementation class Lucha
  */
@@ -26,8 +31,29 @@ public class LuchaFinal extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// Obtener los IDs de los caballeros que van a luchar
+        int idCaballero1 = Integer.parseInt(request.getParameter("caballero1"));
+        int idCaballero2 = Integer.parseInt(request.getParameter("caballero2"));
+
+        // Conectar a la base de datos y obtener los caballeros
+        Conector conector = new Conector();
+        ModeloCaballero modeloCaballero = new ModeloCaballero();
+        modeloCaballero.setConector(conector);
+
+        Caballero caballero1 = modeloCaballero.getPorId(idCaballero1);
+        Caballero caballero2 = modeloCaballero.getPorId(idCaballero2);
+
+        // Determinar el ganador
+        ModeloLucha modeloLucha = new ModeloLucha();
+        Caballero ganador = modeloLucha.luchar(caballero1, caballero2);
+
+        // Pasar los datos a la JSP
+        request.setAttribute("caballero1", caballero1);
+        request.setAttribute("caballero2", caballero2);
+        request.setAttribute("ganador", ganador);
+
+        // Redirigir a la página de resultado
+        request.getRequestDispatcher("resultadoLucha.jsp").forward(request, response);
 	}
 
 	/**
