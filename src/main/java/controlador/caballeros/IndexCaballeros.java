@@ -2,6 +2,8 @@ package controlador.caballeros;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
@@ -47,6 +49,14 @@ public class IndexCaballeros extends HttpServlet {
 
 		
 		ArrayList<Caballero> caballeros = modeloCaballero.getAll();
+		
+		// Ordenar los caballeros por nombre
+        Collections.sort(caballeros, new Comparator<Caballero>() {
+            @Override
+            public int compare(Caballero c1, Caballero c2) {
+                return c1.getNombre().compareToIgnoreCase(c2.getNombre());
+            }
+        });
 		
 		// Filtrar la lista si hay un término de búsqueda
         if (search != null && !search.isEmpty()) {

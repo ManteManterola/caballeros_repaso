@@ -37,31 +37,35 @@
 			placeholder="Buscar por nombre...">
 	</form>
 	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col"><strong>ID</strong></th>
-				<th scope="col"><strong>Nombre</strong></th>
-				<th scope="col"><strong>Fuerza</strong></th>
-				<th scope="col"><strong>Experiencia</strong></th>
-				<th scope="col"><strong>Foto</strong></th>
-				<th scope="col"><strong>Arma</strong></th>
-				<th scope="col"><strong>Escudo</strong></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${caballeros}" var="caballero">
-				<tr>
-					<td>${caballero.id}</td>
-					<td>${caballero.nombre}</td>
-					<td>${caballero.fuerza}</td>
-					<td>${caballero.experiencia}</td>
-					<td>${caballero.foto}</td>
-					<td>${caballero.arma.nombre}</td>
-					<td>${caballero.escudo.nombre}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+    <thead>
+        <tr>
+            <th scope="col"><strong>ID</strong></th>
+            <th scope="col"><strong>Nombre</strong></th>
+            <th scope="col"><strong>Fuerza</strong></th>
+            <th scope="col"><strong>Experiencia</strong></th>
+            <th scope="col"><strong>Foto</strong></th>
+            <th scope="col"><strong>Arma</strong></th>
+            <th scope="col"><strong>Escudo</strong></th>
+            <th scope="col"><strong>Acciones</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach items="${caballeros}" var="caballero">
+            <tr>
+                <td>${caballero.id}</td>
+                <td>${caballero.nombre}</td>
+                <td>${caballero.fuerza}</td>
+                <td>${caballero.experiencia}</td>
+                <td>${caballero.foto}</td>
+                <td>${caballero.arma.nombre}</td>
+                <td>${caballero.escudo.nombre}</td>
+                <td>
+                    <a class="btn btn-primary" href="EditarCaballero?id=${caballero.id}">Editar</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
