@@ -45,7 +45,10 @@ public class LuchaFinal extends HttpServlet {
 
         // Determinar el ganador
         ModeloLucha modeloLucha = new ModeloLucha();
+        modeloLucha.setConector(conector);
         Caballero ganador = modeloLucha.luchar(caballero1, caballero2);
+        
+        modeloLucha.insertLucha(caballero1, caballero2, ganador);
 
         // Pasar los datos a la JSP
         request.setAttribute("caballero1", caballero1);

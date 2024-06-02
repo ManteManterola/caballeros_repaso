@@ -20,9 +20,10 @@
 			<button type="button" class="btn-close" data-bs-dismiss="alert"
 				aria-label="Close"></button>
 		</div>
-	</c:if>
+	</c:if> 
 	<a class="btn btn-secondary btn-lg mt-5" href="FormInsertCaballeros">CREAR
 		CABALLERO</a>
+	<a class="btn btn-secondary btn-lg mt-5" href="InsertMasivo">INSERT MASIVO</a>
 	<a class="btn btn-secondary btn-lg mt-5" href="Lucha1Stage">LUCHAR</a>
 	
 	<form action="EliminarCaballeros" method="post">
